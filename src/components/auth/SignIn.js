@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 
-class CreateProject extends Component {
+class SignIn extends Component {
     
     state = {
-        title : '',
-        content : ''
+        email : '',
+        password : ''
     }
 
     handleChange = (e)=> {
@@ -22,17 +22,17 @@ class CreateProject extends Component {
             <div className="container mt-5">
                 <form onSubmit={this.handleSubmit}>
                     <fieldset className="form-group">
-                        <legend>Create Project</legend>
+                        <legend>Sign In</legend>
                         <div className="form-group">
-                            <label htmlFor="title">Password</label>
-                            <input type="text" className="form-control" id="title" placeholder="Enter Title" onChange={this.handleChange}/>
+                            <label htmlFor="email">Email</label>
+                            <input type="text" className="form-control" id="email" placeholder="Enter Email" onChange={this.handleChange}/>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="content">Password</label>
-                            <textarea className="form-control" id="content" placeholder="Write Details" onChange={this.handleChange}/>
+                            <label htmlFor="password">Password</label>
+                            <input type="password" className="form-control" id="password" placeholder="Enter Password" onChange={this.handleChange}/>
                         </div>
                         <div className="form-group">
-                            <button className="btn btn-primary">Add Project</button>
+                            <button className="btn btn-primary">Sign In</button>
                         </div>
                     </fieldset>
                 </form>
@@ -41,4 +41,4 @@ class CreateProject extends Component {
     }
 }
 
-export default CreateProject;
+export default SignIn;
