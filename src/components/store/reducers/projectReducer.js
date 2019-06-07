@@ -9,10 +9,21 @@ const initState = {
 const projectReducer = (state=initState, action )=> {
     switch(action.type) {
         case 'CREATE_PROJECT' :
-            console.log(action);
+            let newstate = {
+                id : Math.random(),
+                title : action.project.title,
+                content : action.project.content,
+            }
+            newstate = [...state.projects, newstate]
+
+            return {
+                ...state,
+                projects : newstate
+            };
+        default : 
+            return state
             
     }
-    return state;
 }
 
 export default projectReducer;
