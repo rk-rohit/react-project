@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {createProject} from '../store/actions/ProjectActions';
 
 class CreateProject extends Component {
     
@@ -15,6 +17,11 @@ class CreateProject extends Component {
     
     handleSubmit = (e)=> {
         e.preventDefault();
+        this.props.createProject(this.state);
+        this.setState({
+            title : '',
+            connect: ''
+        })
     }
 
     render() {
@@ -24,12 +31,12 @@ class CreateProject extends Component {
                     <fieldset className="form-group">
                         <legend>Create Project</legend>
                         <div className="form-group">
-                            <label htmlFor="title">Password</label>
-                            <input type="text" className="form-control" id="title" placeholder="Enter Title" onChange={this.handleChange}/>
+                            <label htmlFor="title">Title</label>
+                            <input type="text" className="form-control" id="title" placeholder="Enter Title" value={this.state.title} onChange={this.handleChange}/>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="content">Password</label>
-                            <textarea className="form-control" id="content" placeholder="Write Details" onChange={this.handleChange}/>
+                            <label htmlFor="content">Content</label>
+                            <textarea className="form-control" id="content" placeholder="Write Details" onChange={this.handleChange} value={this.state.content} />
                         </div>
                         <div className="form-group">
                             <button className="btn btn-primary">Add Project</button>
@@ -41,4 +48,12 @@ class CreateProject extends Component {
     }
 }
 
-export default CreateProject;
+const mapDispatchToProps = (dispatch)=> {
+    return {
+        createProject : (project)=> {
+            dispatch(createProject(project))
+        } 
+    }
+}
+
+export default connect(null, mapDispatchToProps)(CreateProject);
