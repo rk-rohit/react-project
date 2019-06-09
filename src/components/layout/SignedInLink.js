@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {signOut} from '../store/actions/authActions';
 
 const SingedInLink = (props)=> {
-
+    console.log(props);
     return(
         <div className="navbar-nav justify-content-between">
             <div className="navbar-nav">
@@ -20,10 +20,16 @@ const SingedInLink = (props)=> {
     )
 }
 
+const mapStateToProps = (state)=> {
+    console.log(state);
+    return {
+
+    }
+}
 const mapDispatchToProps = (dispatch) => {
     return {
         signOut : ()=> dispatch(signOut())
     }
 }
 
-export default connect(null, mapDispatchToProps)(SingedInLink);
+export default connect(mapStateToProps, mapDispatchToProps)(SingedInLink);
